@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create instances
+      molecule_vagrant:
+        instance_name: "{{ item }}"
+        platform_box: ubuntu/trusty64
+        state: up
+      with_items:
+        - openhab

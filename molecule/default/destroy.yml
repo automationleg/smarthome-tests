@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Destroy instances
+      molecule_vagrant:
+        instance_name: "{{ item }}"
+        platform_box: ubuntu/trusty64
+        state: destroy
+      with_items:
+        - openhab

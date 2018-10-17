@@ -1,0 +1,33 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  ssh_connection_options:
+    - -o ControlPath=~/.ansible/cp/%r@%h-%p
+  provider:
+    name: parallels
+lint:
+  name: yamllint
+platforms:
+  - name: openhab
+    box: ubuntu/xenial64
+    instance_raw_config_args:
+      - "vm.network 'forwarded_port', guest: 8080, host: 8080"
+provisioner:
+  name: ansible
+  inventory-file: ../../../smarthome-ansible/inventory.yml
+  env:
+    ANSIBLE_ROLES_PATH: ../../../smarthome-ansible/roles
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  env:
+    MOLECULE_INVENTORY_FILE: ../../../smarthome-ansible/inventory.yml
+  lint:
+    name: flake8

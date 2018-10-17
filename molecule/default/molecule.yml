@@ -3,10 +3,12 @@ dependency:
   name: galaxy
 driver:
   name: vagrant
-  ssh_connection_options:
-    - -o ControlPath=~/.ansible/cp/%r@%h-%p
+  raw_config_args:
+    - "ssh.insert_key = false"
   provider:
     name: parallels
+  instances:
+    - name: openhab
 lint:
   name: yamllint
 platforms:

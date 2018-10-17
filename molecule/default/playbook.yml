@@ -3,3 +3,4 @@
   hosts: openhab
   roles:
     - role: openhab
+    - role: docker

@@ -2,5 +2,9 @@
 - name: Converge
   hosts: openhab
   roles:
+    - role: basic
     - role: openhab
-    - role: docker
+    # - role: docker-install
+    # - role: influxdb
+    # - role: openhab-config
+    # - role: openhab-restore

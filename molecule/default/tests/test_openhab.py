@@ -18,3 +18,11 @@ def test_openhab_2_2_0_is_installed(host):
 
 def test_java8_is_installed(host):
     assert host.package('openjdk-8-jre-headless').is_installed
+
+
+def test_openhab_is_listening_on_http_port_8080(host):
+    assert host.socket("tcp://:::8080").is_listening
+
+
+def test_openhab_is_listening_on_ssl_port_8443(host):
+    assert host.socket("tcp://:::8443").is_listening

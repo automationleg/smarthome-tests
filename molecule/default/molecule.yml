@@ -14,10 +14,26 @@ lint:
 platforms:
   - name: openhab
     box: ubuntu/xenial64
+    memory: 2048
+    cpus: 2
     instance_raw_config_args:
-      - "vm.network 'forwarded_port', guest: 8080, host: 8080"
+      - "vm.network 'forwarded_port', guest: 8080, host: 9999"
+      - "vm.synced_folder '.', '/vagrant', disabled: false"
+    interfaces:
+      - auto_config: true
+        ip: 192.168.2.22
+        network_name: private_network
+        type: static
+    config_options:
+      synced_folder: true
+    provider_raw_config_args:
+      - "customize ['modifyvm', :id, '--cpuexecutioncap', '50']"
+#  - name: krzysr
+#    groups:
+#      - smarthome
 provisioner:
   name: ansible
+  log: true
   inventory-file: ../../../smarthome-ansible/inventory.yml
   env:
     ANSIBLE_ROLES_PATH: ../../../smarthome-ansible/roles

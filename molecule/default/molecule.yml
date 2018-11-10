@@ -13,17 +13,20 @@ lint:
   name: yamllint
 platforms:
   - name: openhab
+    groups:
+      - vagrant
     box: ubuntu/xenial64
     memory: 2048
     cpus: 2
     instance_raw_config_args:
-      - "vm.network 'forwarded_port', guest: 8080, host: 9999"
+      # - "vm.network 'forwarded_port', guest: 8080, host: 7799"
       - "vm.synced_folder '.', '/vagrant', disabled: false"
     interfaces:
       - auto_config: true
-        ip: 192.168.2.22
-        network_name: private_network
-        type: static
+        ip: 192.168.1.23
+        network_name: public_network
+        bridge: eno1
+        # type: static
     config_options:
       synced_folder: true
     provider_raw_config_args:
@@ -35,8 +38,12 @@ provisioner:
   name: ansible
   log: true
   inventory-file: ../../../smarthome-ansible/inventory.yml
+  inventory:
+    links:
+      group_vars: ../../../smarthome-ansible/vars/group_vars
   env:
-    ANSIBLE_ROLES_PATH: ../../../smarthome-ansible/roles
+    BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
+    ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
   lint:
     name: ansible-lint
 scenario:

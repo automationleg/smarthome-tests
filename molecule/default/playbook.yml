@@ -4,7 +4,9 @@
   roles:
     - role: basic
     - role: openhab
-    # - role: docker-install
-    # - role: influxdb
+    - role: docker-install
+    - role: influxdb
     # - role: openhab-config
-    # - role: openhab-restore
+    - role: openhab-restore
+    - role: install-grafana
+    - role: configure-grafana

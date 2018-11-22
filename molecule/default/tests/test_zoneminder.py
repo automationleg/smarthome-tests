@@ -3,7 +3,7 @@ import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('openhab')
+    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('asrock')
 
 
 @pytest.mark.parametrize('container', [
@@ -17,8 +17,8 @@ def test_mysql_docker_is_running(host, container):
 
 
 @pytest.mark.parametrize('container, socket', [
-    ('mysql','tcp://:::8306'),
-    ('zoneminder','tcp://:::8099')
+    ('mysql', 'tcp://:::8306'),
+    ('zoneminder', 'tcp://:::8099')
 ])
 def test_if_zoneminder_is_listening(host, container, socket):
     assert host.socket(socket).is_listening, container+'\

@@ -6,7 +6,7 @@ driver:
   raw_config_args:
     - "ssh.insert_key = false"
   provider:
-    name: parallels
+    name: virtualbox
   instances:
     - name: openhab
 lint:
@@ -20,7 +20,8 @@ platforms:
     cpus: 2
     instance_raw_config_args:
       # - "vm.network 'forwarded_port', guest: 8080, host: 7799"
-      - "vm.synced_folder '.', '/vagrant', disabled: false"
+      - "vm.synced_folder '~/shared_folders/vagrant', \
+         '/vagrant', disabled: false"
     interfaces:
       - auto_config: true
         ip: 192.168.1.23
@@ -31,16 +32,16 @@ platforms:
       synced_folder: true
     provider_raw_config_args:
       - "customize ['modifyvm', :id, '--cpuexecutioncap', '50']"
-#  - name: krzysr
-#    groups:
-#      - smarthome
+        #  - name: krzysr
+        # groups:
+        # - smarthome
 provisioner:
   name: ansible
   log: true
   inventory-file: ../../../smarthome-ansible/inventory.yml
   inventory:
     links:
-      group_vars: ../../../smarthome-ansible/vars/group_vars
+      group_vars: ../../../smarthome-ansible/group_vars
   env:
     BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
     ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles

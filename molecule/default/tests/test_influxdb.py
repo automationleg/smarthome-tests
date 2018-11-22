@@ -9,7 +9,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def get_influx_auth_string():
     user = 'adminkr'
     passw = 'SuperSecretPassword123'
-    auth = 'influx -username '+user+' -password '+passw+' '
+    db = 'openhab_db'
+    auth = 'influx -username '+user+' -password '+passw+' -database '+db+' '
     return auth
 
 
@@ -45,7 +46,7 @@ def test_influxdb_config_file_updated(host):
 
 
 def test_influxdb_python_client_is_installed(host):
-    pkg = host.pip_package.get_packages()
+    pkg = host.pip_package.get_packages(pip_path='/usr/bin/pip3')
     assert 'influxdb' in pkg
 
 
@@ -62,3 +63,11 @@ def test_user_priviliges_are_set(host):
     cmd = 'show grants for grafana'
     grafana_grant = execute_influx_command(host, cmd)
     assert 'openhab_db READ' in grafana_grant
+
+
+def test_influxdb_database_restored(host):
+    cmd = 'show series'
+    result = execute_influx_command(host, cmd)
+    nlines = result.count('\n')
+    assert nlines > 50
+

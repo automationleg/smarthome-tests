@@ -26,3 +26,9 @@ def test_openhab_is_listening_on_http_port_8080(host):
 
 def test_openhab_is_listening_on_ssl_port_8443(host):
     assert host.socket("tcp://:::8443").is_listening
+
+
+def test_openhab_web_is_accessible(host):
+    cmd = 'curl -L 192.168.1.23:8080'
+    result = host.command(cmd).stdout
+    assert '<title>openHAB</title>' in result

@@ -1,14 +1,19 @@
 import os
 import testinfra
 import testinfra.utils.ansible_runner
+import pytest
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('openhab')
 ansible_hosts_file = os.environ['BASE_ROLES_PATH']+"/basic/files/hosts"
 
-
-def test_unzip_is_installed(host):
-    package = host.package("unzip")
+@pytest.mark.parametrize('package',[
+    'unzip',
+    'htop',
+    'python-minimal'
+])
+def test_unzip_is_installed(host, package):
+    package = host.package(package)
     assert package.is_installed
 
 

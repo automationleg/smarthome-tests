@@ -5,14 +5,15 @@ driver:
   name: vagrant
   raw_config_args:
     - "ssh.insert_key = false"
+    - "ssh.private_key_path = ['~/.ssh/id_rsa', '~/.vagrant.d/insecure_private_key']"
   provider:
     name: virtualbox
   instances:
-    - name: openhab
+    - name: openhabtest
 lint:
   name: yamllint
 platforms:
-  - name: openhab
+  - name: openhabtest
     groups:
       - vagrant
     box: ubuntu/xenial64
@@ -20,11 +21,11 @@ platforms:
     cpus: 2
     instance_raw_config_args:
       # - "vm.network 'forwarded_port', guest: 8080, host: 7799"
-      - "vm.synced_folder '~/shared_folders/vagrant', \
-         '/vagrant', disabled: false"
+      - "vm.synced_folder '/data', \
+         '/vagrant_data', disabled: false"
     interfaces:
       - auto_config: true
-        ip: 192.168.1.23
+        ip: 192.168.1.24
         network_name: public_network
         bridge: eno1
         # type: static
@@ -32,6 +33,9 @@ platforms:
       synced_folder: true
     provider_raw_config_args:
       - "customize ['modifyvm', :id, '--cpuexecutioncap', '50']"
+      - "customize ['modifyvm', :id, '--usb', 'on']"
+      - "customize ['usbfilter', 'add', '4', '--target', :id, '--name',\
+         'VIES', '--vendorid', '0x10c4', '--productid', '0xea60']"
         #  - name: krzysr
         # groups:
         # - smarthome
@@ -45,6 +49,8 @@ provisioner:
   env:
     BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
     ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
+  extra_vars:
+    ansible_python_interpreter: /usr/bin/python3
   lint:
     name: ansible-lint
 scenario:

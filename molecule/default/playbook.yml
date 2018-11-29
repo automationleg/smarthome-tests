@@ -1,12 +1,17 @@
 ---
 - name: Converge
-  hosts: openhab
+  hosts: vagrant
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  vars_files:
+    - ~/smarthome-devops/oh-data/secrets/secrets.yml
   roles:
     - role: basic
+    - role: nameserver
     - role: openhab
     - role: docker-install
     - role: influxdb
-    # - role: openhab-config
     - role: openhab-restore
     - role: install-grafana
     - role: configure-grafana
+    - role: vcontrold

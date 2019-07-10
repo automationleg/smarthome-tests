@@ -1,0 +1,31 @@
+openhab-package-expert                      │ 2.4.0            │ x        │ Started     │ distro-2.4.0            │ openHAB Expert Package
+openhab-runtime-base                        │ 2.4.0            │ x        │ Started     │ distro-2.4.0            │ openHAB Runtime Base
+openhab-runtime-certificate                 │ 2.4.0            │          │ Started     │ distro-2.4.0            │ SSL Certificate Generator
+openhab-runtime-compat1x                    │ 2.4.0            │          │ Started     │ distro-2.4.0            │ Compatibility layer for openHAB 1 add-ons
+openhab-transport-http                      │ 2.4.0            │          │ Started     │ distro-2.4.0            │ HTTP Transport
+openhab-transport-mdns                      │ 2.4.0            │          │ Started     │ distro-2.4.0            │ mDNS Transport
+openhab-transport-serial                    │ 2.4.0            │          │ Started     │ distro-2.4.0            │ Serial Transport
+openhab-transport-upnp                      │ 2.4.0            │          │ Started     │ distro-2.4.0            │ UPnP Transport
+openhab-binding-astro                       │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Astro Binding
+openhab-binding-ntp                         │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ NTP Binding
+openhab-transformation-map                  │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Map Transformation
+openhab-transformation-regex                │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ RegEx Transformation
+openhab-transformation-jsonpath             │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ JSONPath Transformation
+openhab-ui-classic                          │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Classic UI
+openhab-ui-paper                            │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Paper UI
+openhab-ui-habmin                           │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ HABmin
+openhab-ui-habpanel                         │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ HABPanel
+openhab-binding-exec                        │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Exec Binding
+openhab-binding-mihome                      │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Xiaomi Mi Smart Home Binding
+openhab-binding-samsungtv                   │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Samsung TV Binding
+openhab-binding-systeminfo                  │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ System Info Binding
+openhab-binding-vitotronic                  │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ Vitotronic Binding
+openhab-misc-openhabcloud                   │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ openHAB Cloud Connector
+openhab-binding-expire1                     │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ Expire Binding
+openhab-binding-http1                       │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ HTTP Binding
+openhab-binding-weather1                    │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ Weather Binding
+openhab-persistence-influxdb                │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ InfluxDB (v 1.0) Persistence
+openhab-persistence-rrd4j                   │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ RRD4j Persistence
+openhab-misc-gcal1                          │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ Google Calendar Scheduler
+openhab-binding-knx1                        │ 1.11.0           │ x        │ Started     │ openhab-addons-2.2.0    │ KNX Binding
+openhab-binding-satel1                      │ 1.11.0           │ x        │ Started     │ openhab-addons-2.2.0    │ Satel Binding

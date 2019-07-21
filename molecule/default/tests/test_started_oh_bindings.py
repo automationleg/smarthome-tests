@@ -6,8 +6,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('openhab')
 
 
-def test_all_openhab_bindings_are_started(host):
-    path = os.fspath.join('..')
+def test_all_openhab_bindings_are_started(host, request):
+    path = request.fspath.dirname
     with open(path+'/openhab_features.list') as f:
         features = f.read()
    
@@ -22,7 +22,7 @@ def test_all_openhab_bindings_are_started(host):
     #     for feature in features
     #     if feature not in active_features
     # ]
-    
+    not_started_features = []
     for feature in started_features:
        if feature not in active_features:
            not_started_features.append(feature)
@@ -30,4 +30,3 @@ def test_all_openhab_bindings_are_started(host):
     assert not_started_features, 'Not all openhab features started. features not started: '+not_started_features
 
     
-

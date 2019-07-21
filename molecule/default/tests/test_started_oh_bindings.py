@@ -17,15 +17,11 @@ def test_all_openhab_bindings_are_started(host, request):
 
     cmd = 'ssh -p 8101 openhab@localhost "feature:list|grep -v Uninstalled |grep ^openhab"'
     active_features = host.command(cmd).stdout
-    # not_started_features = [
-    #     feature
-    #     for feature in features
-    #     if feature not in active_features
-    # ]
-    not_started_features = []
-    for feature in started_features:
-       if feature not in active_features:
-           not_started_features.append(feature)
+    not_started_features = [
+        feature
+        for feature in started_features
+        if feature not in active_features
+    ]
     
     assert not_started_features, 'Not all openhab features started. features not started: '+not_started_features
 

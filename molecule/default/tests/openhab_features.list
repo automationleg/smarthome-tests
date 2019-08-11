@@ -23,9 +23,7 @@ openhab-binding-vitotronic                  │ 2.4.0            │ x        �
 openhab-misc-openhabcloud                   │ 2.4.0            │ x        │ Started     │ openhab-addons-2.4.0    │ openHAB Cloud Connector
 openhab-binding-expire1                     │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ Expire Binding
 openhab-binding-http1                       │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ HTTP Binding
-openhab-binding-weather1                    │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ Weather Binding
 openhab-persistence-influxdb                │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ InfluxDB (v 1.0) Persistence
 openhab-persistence-rrd4j                   │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ RRD4j Persistence
 openhab-misc-gcal1                          │ 1.13.0           │ x        │ Started     │ openhab-addons-2.4.0    │ Google Calendar Scheduler
-openhab-binding-knx1                        │ 1.11.0           │ x        │ Started     │ openhab-addons-2.2.0    │ KNX Binding
-openhab-binding-satel1                      │ 1.11.0           │ x        │ Started     │ openhab-addons-2.2.0    │ Satel Binding
+openhab-binding-knx                         │ 1.11.0           │ x        │ Started     │ openhab-addons-2.2.0    │ KNX Binding

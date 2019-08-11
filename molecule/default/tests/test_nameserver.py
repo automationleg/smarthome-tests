@@ -8,7 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_nameserver_ips(host):
     resolv = host.file("/etc/resolv.conf")
-    assert resolv.contains("nameserver 192.168.1.2")
+    assert resolv.contains("nameserver 192.168.1.1")
     assert resolv.contains("nameserver 8.8.8.8")
 
 

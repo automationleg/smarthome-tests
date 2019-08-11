@@ -1,11 +1,10 @@
 import os
 import re
-
+import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('openhab')
-
+    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('vagrant')
 
 def test_all_openhab_bindings_are_started(host, request):
     path = request.fspath.dirname
@@ -17,7 +16,7 @@ def test_all_openhab_bindings_are_started(host, request):
         for line in features.splitlines()
     ]
 
-    cmd = 'ssh -p 8101 openhab@localhost "feature:list|grep -v Uninstalled |grep ^openhab"'
+    cmd = 'ssh -o "StrictHostKeyChecking=no" -p 8101 openhab@localhost "feature:list|grep -v Uninstalled |grep ^openhab"'
     response = host.command(cmd).stdout
 
     # remove strange utf8 characters from the ssh response

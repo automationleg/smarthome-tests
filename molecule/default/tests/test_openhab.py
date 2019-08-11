@@ -3,7 +3,7 @@ import os
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('openhab')
+    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('vagrant')
 
 
 def test_apt_transport_https_installed(host):
@@ -29,6 +29,6 @@ def test_openhab_is_listening_on_ssl_port_8443(host):
 
 
 def test_openhab_web_is_accessible(host):
-    cmd = 'curl -L 192.168.1.23:8080'
+    cmd = 'curl -L openhab:8080'
     result = host.command(cmd).stdout
     assert '<title>openHAB</title>' in result

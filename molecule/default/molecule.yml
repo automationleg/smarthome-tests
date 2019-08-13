@@ -9,11 +9,11 @@ driver:
   provider:
     name: virtualbox
   instances:
-    - name: openhabtest
-lint:
-  name: yamllint
+    - name: testvm
+  lint:
+    name: yamllint
 platforms:
-  - name: openhabtest
+  - name: testvm
     groups:
       - vagrant
     box: ubuntu/xenial64

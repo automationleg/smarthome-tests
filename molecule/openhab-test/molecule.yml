@@ -1,0 +1,43 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: delegated
+  options:
+    managed: False
+    login_cmd_template: 'ssh {instance} -F ~/.ssh/config'
+    ansible_connection_options:
+      connection: ssh
+      ansible_ssh_common_args: -F /home/krzysztof/.ssh/config
+lint:
+  name: yamllint
+platforms:
+  - name: openhab-test
+    groups:
+      - vagrant
+  - name: krzysr
+    groups:
+      - asrock
+provisioner:
+  name: ansible
+  log: true
+  inventory-file: ../../../smarthome-ansible/inventory.yml
+  inventory:
+    links:
+      group_vars: ../../../smarthome-ansible/group_vars
+  env:
+    BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
+    ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
+  lint:
+    name: ansible-lint
+scenario:
+  name: openhab-test
+verifier:
+  name: testinfra
+  directory: ../default/tests
+  options:
+    verbose: true
+  env:
+    MOLECULE_INVENTORY_FILE: ../../../smarthome-ansible/inventory.yml
+  lint:
+    name: flake8

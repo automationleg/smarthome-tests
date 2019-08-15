@@ -16,6 +16,7 @@ def test_if_grafana_is_listening_on_port_3000(host):
 
 
 def test_grafana_web_is_accessible(host):
-    cmd = 'curl -L openhab:3000'
+    name = host.backend.get_hostname()
+    cmd = 'curl -L {}:3000'.format(name)
     result = host.command(cmd).stdout
     assert '<title>Grafana</title>' in result

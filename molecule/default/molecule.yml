@@ -42,13 +42,13 @@ platforms:
 provisioner:
   name: ansible
   log: true
-  inventory-file: ../../../smarthome-ansible/inventory.yml
+  inventory-file: ../../../smarthome-provision/inventory.yml
   inventory:
     links:
-      group_vars: ../../../smarthome-ansible/group_vars
+      group_vars: ../../../smarthome-provision/group_vars
   env:
-    BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
-    ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
+    BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-provision/roles
+    ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-provision/roles
   extra_vars:
     ansible_python_interpreter: /usr/bin/python3
   lint:
@@ -60,6 +60,6 @@ verifier:
   options:
     verbose: true
   env:
-    MOLECULE_INVENTORY_FILE: ../../../smarthome-ansible/inventory.yml
+    MOLECULE_INVENTORY_FILE: ../../../smarthome-provision/inventory.yml
   lint:
     name: flake8

@@ -47,8 +47,8 @@ provisioner:
     links:
       group_vars: ../../../smarthome-provision/group_vars
   env:
-    BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-provision/roles
-    ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-provision/roles
+    BASE_ROLES_PATH: $HOME/openhab-smarthome-server/smarthome-provision/roles
+    ANSIBLE_ROLES_PATH: $HOME/openhab-smarthome-server/smarthome-provision/roles
   extra_vars:
     ansible_python_interpreter: /usr/bin/python3
   lint:

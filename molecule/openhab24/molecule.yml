@@ -26,8 +26,8 @@ provisioner:
     links:
       group_vars: ../../../smarthome-ansible/group_vars
   env:
-    BASE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
-    ANSIBLE_ROLES_PATH: $HOME/smarthome-devops/smarthome-ansible/roles
+    BASE_ROLES_PATH: $HOME/openhab-smarthome-server/smarthome-ansible/roles
+    ANSIBLE_ROLES_PATH: $HOME/openhab-smarthome-server/smarthome-ansible/roles
   lint:
     name: ansible-lint
 scenario:

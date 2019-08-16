@@ -5,7 +5,7 @@ import pytest
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('vagrant')
-ansible_hosts_file = os.environ['HOME']+"/smarthome-devops/oh-data/basic/hosts"
+ansible_hosts_file = os.environ['HOME']+"/openhab-smarthome-server/oh-data/basic/hosts"
 
 @pytest.mark.parametrize('package',[
     'unzip',
